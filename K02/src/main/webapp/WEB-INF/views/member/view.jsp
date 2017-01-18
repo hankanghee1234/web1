@@ -237,10 +237,7 @@
    			
    			event.preventDefault();
    			
-   			var data = {rno : ${param.rno},
-	   			replyer = $("#replyer").val(),
-	   			replytest = $("#replytext").val()
-   			};
+   			
    			
    			
    		});
