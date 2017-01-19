@@ -1,11 +1,13 @@
  <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page session="false"%> 
-<%@include file="../include/header2.jsp"%>
-
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
 <style>
- 
 .table-view{
 	background-color : silver;
 	color : purple;
@@ -34,7 +36,7 @@
 	}
 
 </style>
-
+<body>
 
 <h1 align="center">회원정보 보여주기</h1>
 <form role="form" method="post" id="f1">
@@ -91,33 +93,22 @@
 <button type="submit" class="btn btn-primary" id="replyAddBtn">댓글등록</button>
 </form>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="exampleModalLabel"></h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal 제목</h4>
       </div>
       <div class="modal-body">
-        <form>
-          <div class="form-group">
-            <label for="recipient-name" class="control-label">작성자</label>
-            <input type="text" class="form-control" id="replyer">
-          </div>
-          <div class="form-group">
-            <label for="message-text" class="control-label">댓글수정내용</label>
-            <textarea class="form-control" id="replytext"></textarea>
-          </div>
-        </form>
+        Modal 내용
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
-        <button type="button" class="btn btn-primary">수정완료</button>
       </div>
     </div>
-  </div>
-</div>
+  </div></div>
+
      
 
 <script src="https://code.jquery.com/jquery-2.2.4.js"
@@ -174,7 +165,7 @@
 	                	   '<div class="replyMember"><p><label for="newRno">' + "글번호: " + obj.rno + '</label></p>'
 	                	 +  '<p><label for="newReplyer">' + "작성자: " + obj.replyer + '</label></p>'
 	                     + '<p><label for="newReplyText">'+ "댓글내용: " + obj.replytext +'</label></p>'
-	                     + '<button type="button" class="btn btn-warning" id="replyUpdateBtn" value="'
+	                     + '<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal" value="'
 	                     + obj.rno +'">댓글수정</button>'
 	                     + '<button type="button" class="btn btn-cancel" id="replyCencelBtn" value="'
 	                     + obj.rno +'">댓글삭제</button></div>'
@@ -245,4 +236,5 @@
 
 	
 </script>
-<%@include file="../include/footer2.jsp"%> 
+</body>
+</html>

@@ -1,7 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page session="false"%> 
-<%@include file="../include/header2.jsp"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
 <style>
 .fileDrop {
 	width: 300px;
@@ -18,7 +22,7 @@
 	border : 2px solid yellow;
 	}	
 </style>
-
+<body>
 <form class="membership" action="register" method="post">
 <div class="form-group" align="center">
 <h1>회원가입 페이지</h1>
@@ -97,4 +101,5 @@
 
 	});
 </script>		
-<%@include file="../include/footer2.jsp"%>
+</body>
+</html>

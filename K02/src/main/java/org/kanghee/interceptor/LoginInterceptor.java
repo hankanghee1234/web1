@@ -41,7 +41,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 			}
 			//response.sendRedirect("/");
 			Object dest = session.getAttribute("dest");
-			response.sendRedirect(dest != null ? (String)dest:"/"); // dest라는 정보를 써서 자동으로 페이지를 이동한다.
+			response.sendRedirect(dest != null ? (String)dest:"/"); 
 		}
 	}
 
