@@ -93,23 +93,23 @@
 <button type="submit" class="btn btn-primary" id="replyAddBtn">댓글등록</button>
 </form>
 
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal 제목</h4>
-      </div>
-      <div class="modal-body">
-        Modal 내용
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
-      </div>
-    </div>
-  </div></div>
+<!-- header -->
+<div class="modal-header">
+    <!-- 닫기(x) 버튼 -->
+  <button type="button" class="close" data-dismiss="modal">×</button>
+  <!-- header title -->
+  <h4 class="modal-title">Header</h4>
+</div>
+<!-- body -->
+<div class="modal-body">
+    Body
+</div>
+<!-- Footer -->
+<div class="modal-footer">
+    Footer
+  <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+</div>
 
-     
 
 <script src="https://code.jquery.com/jquery-2.2.4.js"
 		integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
@@ -165,9 +165,9 @@
 	                	   '<div class="replyMember"><p><label for="newRno">' + "글번호: " + obj.rno + '</label></p>'
 	                	 +  '<p><label for="newReplyer">' + "작성자: " + obj.replyer + '</label></p>'
 	                     + '<p><label for="newReplyText">'+ "댓글내용: " + obj.replytext +'</label></p>'
-	                     + '<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal" value="'
-	                     + obj.rno +'">댓글수정</button>'
-	                     + '<button type="button" class="btn btn-cancel" id="replyCencelBtn" value="'
+	                     + '<button type="button" data-toggle="modal" value="'
+	                     + obj.rno +'" id="replyUpdateBtn">댓글수정</button>'
+	                     + '<button type="button" id="replyCencelBtn" value="' 
 	                     + obj.rno +'">댓글삭제</button></div>'
 	                 );
 	                      
@@ -224,14 +224,11 @@
               });  
          });  // 댓글 삭제 하기 위한 ajax 호출
          
-   		$('.replytest').on("click", "#replyUpdateBtn", function(event){
+   		$('#replyUpdateBtn').on("click", function(event){
    			
    			event.preventDefault();
    			
-   			
-   			
-   			
-   		});
+   		})
     });
 
 	
