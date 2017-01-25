@@ -93,21 +93,25 @@
 <button type="submit" class="btn btn-primary" id="replyAddBtn">댓글등록</button>
 </form>
 
-<!-- header -->
-<div class="modal-header">
-    <!-- 닫기(x) 버튼 -->
-  <button type="button" class="close" data-dismiss="modal">×</button>
-  <!-- header title -->
-  <h4 class="modal-title">Header</h4>
-</div>
-<!-- body -->
-<div class="modal-body">
-    Body
-</div>
-<!-- Footer -->
-<div class="modal-footer">
-    Footer
-  <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+<!-- Modal window -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" 
+	aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        	<span aria-hidden="true">×</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        Modal body
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 
@@ -116,7 +120,7 @@
 		crossorigin="anonymous"></script>
 		
 <script>
-
+	
 	$(document).ready(function(){
 
 		var formObj = $("form[role='form']");
@@ -165,10 +169,10 @@
 	                	   '<div class="replyMember"><p><label for="newRno">' + "글번호: " + obj.rno + '</label></p>'
 	                	 +  '<p><label for="newReplyer">' + "작성자: " + obj.replyer + '</label></p>'
 	                     + '<p><label for="newReplyText">'+ "댓글내용: " + obj.replytext +'</label></p>'
-	                     + '<button type="button" data-toggle="modal" value="'
-	                     + obj.rno +'" id="replyUpdateBtn">댓글수정</button>'
+	                     + '<button type="button" data-toggle="modal" data-target="#myModal" value="'
+	                     + obj.rno +'" id="replyUpdateBtn" class="btn btn-primary btn-lg">댓글수정</button>'
 	                     + '<button type="button" id="replyCencelBtn" value="' 
-	                     + obj.rno +'">댓글삭제</button></div>'
+	                     + obj.rno +'" class="btn btn-info btn-lg">댓글삭제</button></div>'
 	                 );
 	                      
 	                 console.log(obj); 
@@ -224,11 +228,16 @@
               });  
          });  // 댓글 삭제 하기 위한 ajax 호출
          
-   		$('#replyUpdateBtn').on("click", function(event){
+   		$('#replyUpdateBtn').on("click", function(){
    			
-   			event.preventDefault();
+   			$('#myModal').on('show.bs.modal', function (event) { // myModal 윈도우가 오픈할때 아래의 옵션을 적용
+   			  var button = $(event.relatedTarget); // 모달 윈도우를 오픈하는 버튼
+   			  var titleTxt = button.data('title'); // 버튼에서 data-title 값을 titleTxt 변수에 저장
+   			  var modal = $(this);
+   			  modal.find('.modal-title').text('Title : ' + titleTxt); // 모달위도우에서 .modal-title을 찾아 titleTxt 값을 치환
+   			});
    			
-   		})
+   		}); // Modal window option script
     });
 
 	
