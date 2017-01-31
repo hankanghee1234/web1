@@ -57,8 +57,8 @@ public class MemberController {
 
 		String uploadName = uid + "_" + fileName;
 		
-		FileOutputStream fos = new FileOutputStream("C:\\zzz\\" + fileName); //�썝蹂� �뙆�씪
-		FileOutputStream foss = new FileOutputStream("C:\\zzz\\" + uploadName); //蹂듭궗蹂� �뙆�씪
+		FileOutputStream fos = new FileOutputStream("C:\\zzz\\" + fileName); 
+		FileOutputStream foss = new FileOutputStream("C:\\zzz\\" + uploadName); 
 		
 		BufferedImage origin = ImageIO.read(is);
 		
