@@ -74,12 +74,12 @@
 </ul>
 </c:forEach>
 </table>
-	<ul class="pagination pagination-lg">
+	<ul class="pagination pagination-lg ">
 		<c:if test="${pageMaker.prev}">
 			<li><p><a href="list${pageMaker.makeSearch(pageMaker.startPage - 1)}" >이전</a></p></li>
 		</c:if>
 		<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
-			<li <c:out value="${pageMaker.cri.page == idx?'class = active':''}"/>>
+			<li class="active" <c:out value="${pageMaker.cri.page == idx?'class = active':''}"/>>
 				<p><a href="list${pageMaker.makeSearch(idx)}">${idx}</a></p></li>
 		</c:forEach>
 		<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
