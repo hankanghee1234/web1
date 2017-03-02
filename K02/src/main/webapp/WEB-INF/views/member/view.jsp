@@ -106,35 +106,34 @@
 		<button type="submit" class="btn btn-primary" id="replyAddBtn">댓글등록</button>
 	</form>
 	<!-- modal 창 옵션 -->
-	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" 
-	aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content modal-reset">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        	<span aria-hidden="true">×</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-      </div>
-      <div class="modal-body">
-        <label for="newReplyer">작성자</label> 
-		<input class="form-control" type="text" placeholder="replyer" id="replyer">
-		<label for="newReplyText">댓글수정내용</label> 
-		<input class="form-control" type="text" placeholder="replytext" id="replytext">
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" id="saveBtn">수정</button>
-        <button type="button" class="btn btn-warning" data-dismiss="modal" id="closeBtn">취소</button>
-      </div>
-    </div>
-  </div>
-</div>
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content modal-reset">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	        	<span aria-hidden="true">×</span></button>
+	        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+	      </div>
+	      <div class="modal-body">
+	        <label for="newReplyer">작성자</label> 
+			<input class="form-control" type="text" placeholder="replyer" id="replyer">
+			<label for="newReplyText">댓글수정내용</label> 
+			<input class="form-control" type="text" placeholder="replytext" id="replytext">
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-primary" id="saveBtn">수정</button>
+	        <button type="button" class="btn btn-warning" data-dismiss="modal" id="closeBtn">취소</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
 
 
-			<script src="https://code.jquery.com/jquery-2.2.4.js"
-				integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
-				crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-2.2.4.js"
+		integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+		crossorigin="anonymous"></script>
 
-			<script>
+<script>
 	
 	
 	$(document).ready(function(){
@@ -166,7 +165,8 @@
 			
 		}); //멤버삭제처리
 		 
-		  var printReply = function(){
+		// 즉시 실행함수
+		var printReply = function(){
 			
 			event.preventDefault();
 			var uno = ${param.uno};
@@ -186,9 +186,9 @@
 	                	 +  '<p><label for="newReplyer">' + "작성자: " + obj.replyer + '</label></p>'
 	                     + '<p><label for="newReplyText">'+ "댓글내용: " + obj.replytext +'</label></p>'
 	                     + '<button type="button" data-toggle="modal" data-target="#myModal" value="'
-	                     + obj.rno +'" id="replyUpdateBtn" class="btn btn-primary btn-lg" >댓글수정</button>'
+	                     + obj.rno + '"id="replyUpdateBtn" class="btn btn-primary btn-lg">댓글수정</button>'
 	                     + '<button type="button" id="replyCencelBtn" value="' 
-	                     + obj.rno +'" class="btn btn-info btn-lg">댓글삭제</button></div>'
+	                     + obj.rno + '"class="btn btn-info btn-lg">댓글삭제</button></div>'
 	                 );
 	                      
 	                 console.log(obj); 
@@ -244,15 +244,15 @@
               });  
          });  // 댓글 삭제 하기 위한 ajax 호출
         
-         $('.replytest').on('click', "#replyUpdateBtn",function(event) { 
-         
+         $('.replytest').on('click', "#replyUpdateBtn",function(event) {
         	$(".modal-reset").toggle("slow");
+         
       		
     		event.preventDefault();
     		
-    		var data = { uno :  ${param.uno},
+    		var data = { uno : ${param.uno},
                     replytext : $('#replytext').val(),
-                    replyer :  $('#replyer').val()
+                    replyer : $('#replyer').val()
                     };
     		
     		$("#saveBtn").on("click", function(){

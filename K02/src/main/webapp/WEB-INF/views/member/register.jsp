@@ -43,9 +43,9 @@
 		<!-- /.box-body -->
 		<p><input type="hidden" name="uimg" id="imgsrc"></p>
 		
-		<div class='fileDrop'></div>
+		<div class='fileDrop'>
 		<div class="uploadedList"></div>
-		
+		</div>
 	</div>
 		<div class="box-footer" align="center">
 		<button class="btn btn-primary">등록</button>

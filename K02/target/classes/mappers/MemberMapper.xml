@@ -28,7 +28,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<update id="update" parameterType="MemberVO">
 		update tbl_member set uid= #{uid}, upw= #{upw},
-		email= #{email}, uname= #{uname}, uimg = #{uimg}, updatedate = now() where uno = #{uno};
+		email= #{email}, uname= #{uname}, uimg = #{uimg}, updatedate = now() where uno = #{uno}
 	</update>
 	
 	<delete id="delete" parameterType="MemberVO">
