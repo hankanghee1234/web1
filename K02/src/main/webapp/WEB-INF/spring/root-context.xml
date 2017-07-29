@@ -14,9 +14,9 @@
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
 		<property name="url"
-			value="jdbc:log4jdbc:mysql://localhost:3306/bit88?useSSL=false&amp;serverTimezone=Asia/Seoul"></property>
-		<property name="username" value="makemoney"></property>
-		<property name="password" value="makemoney"></property>
+			value="jdbc:log4jdbc:mysql://localhost:3306/education?useSSL=false&amp;serverTimezone=Asia/Seoul"></property>
+		<property name="username" value="hankanghee"></property>
+		<property name="password" value="1587"></property>
 	</bean>
 
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
