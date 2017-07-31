@@ -1,22 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@include file="../include/header.jsp" %>
-<style>
-.fileDrop {
-	width: 300px;
-	height: 300px;
-	border: 2px groove blue;
-	}
 
-.box-body {
-	background-color: aqua;
-	margin: 30px;
-	font-style: italic;
-	font-size: 20px;
-	font-family: monospace;
-	border : 2px solid yellow;
-	}	
-</style>
 <body>
 <form class="membership" action="register" method="post">
 <div class="form-group" align="center">
@@ -24,21 +9,17 @@
 
 		<div class="box-body">
 			<div class="form-group">
-				<label for="exampleInputUserID">아이디</label> 
-				<input type="text" name="uid" class="form-control" placeholder="Enter UserID">
+				<label for="exampleInputTitle">타이틀</label> 
+				<input type="text" name="title" class="form-control" placeholder="Enter Title">
 			</div>
 			<div class="form-group">
-				<label for="exampleInputPassword">패스워드</label>
-				<input type="text" name="upw" class="form-control" placeholder="Enter UserPW">
+				<label for="exampleInputContent">글내용</label>
+				<input type="text" name="content" class="form-control" placeholder="Enter Content">
 			</div>
 			<div class="form-group">
-				<label for="exampleInputEmail">이메일</label>
-				<input type="text" name="email" class="form-control" placeholder="Enter Email">
+				<label for="exampleInputMember_id">작성자</label>
+				<input type="text" name="member_id" class="form-control" placeholder="Enter Member_id">
 			</div>
-			<div class="form-group">
-				<label for="exampleInputUserName">이름</label>
-				<input type="text" name="uname" class="form-control" placeholder="Enter UserName">
-			</div>	
 		</div>
 		<!-- /.box-body -->
 		<p><input type="hidden" name="uimg" id="imgsrc"></p>
@@ -48,53 +29,8 @@
 		</div>
 	</div>
 		<div class="box-footer" align="center">
-		<button class="btn btn-primary">등록</button>
+		<button class="btn btn-primary" type="submit">등록</button>
 		</div>
-</form>
-	
-<script src="https://code.jquery.com/jquery-2.2.4.js"
-		integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
-		crossorigin="anonymous"></script>
-		
-<script>
-	
-	$(document).ready(function() {
-		
-		var uploadedList = $(".uploadedList");
-		
-		$(".fileDrop").on("dragenter dragover", function(event) {
-			event.preventDefault();
-		});
-		
-		$(".fileDrop").on("drop", function(event) {
-			event.preventDefault();
-			
-			var files = event.originalEvent.dataTransfer.files;
-			var file = files[0];
-			
-			var formData = new FormData();
-			
-			$('.uploadedList').empty();
-			formData.append("file", file);
-			
-			console.log(formData);
-			
-			$.ajax({
-				url : "uploadFile",
-				data : formData,
-				dataType : 'text',
-				type : "post",
-				contentType : false,
-				processData : false,
-				success : function(data) {
-					uploadedList.html("<img src=show?name=" + data + ">");
-					$("#imgsrc").val(data);
-					alert("이미지 등록 완료");
-				}
-			});
-		});
-
-	});
-</script>		
+</form>		
 </body>
 <%@include file="../include/footer.jsp" %>
