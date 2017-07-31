@@ -33,7 +33,7 @@ public class BoardController {
 		service.create(vo);
 		model.addAttribute("vo", vo);
 		
-		return "redirect:./list?page=1";
+		return "redirect:./list";
 	}
 	
 	@RequestMapping(value = "/view", method = RequestMethod.GET)

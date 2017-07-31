@@ -15,10 +15,10 @@ public class CommonExceptionAdvice {
 	private ModelAndView errorModelAndView(Exception ex) {
 		logger.info("Error_Common");
 		
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("/error_common");
-		modelAndView.addObject("exception", ex);
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("/error_common");
+		mv.addObject("exception", ex);
 		
-		return modelAndView;
+		return mv;
 	}
 }
