@@ -43,6 +43,11 @@ public class BoardController {
 		model.addAttribute("read", service.read(bno));
 	}
 	
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	public void listPage(Model model) throws Exception {
+		logger.info("List Page 이동");
+	}
+	
 	/*@RequestMapping(value = "/update", method = RequestMethod.GET)
 	public void updateGET(@RequestParam("uno")Integer uno, @ModelAttribute("cri")SearchCriteria cri, 
 			Model model) throws Exception {
