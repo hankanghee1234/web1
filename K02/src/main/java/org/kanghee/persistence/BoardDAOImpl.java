@@ -1,5 +1,7 @@
 package org.kanghee.persistence;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.kanghee.domain.BoardVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +37,12 @@ public class BoardDAOImpl implements BoardDAO {
 	public void delete(Integer bno) throws Exception {
 		
 		session.delete(NAME + ".delete", bno);
+	}
+
+	@Override
+	public List<BoardVO> list() throws Exception {
+		
+		return session.selectList(NAME + ".list");
 	}
 
 }

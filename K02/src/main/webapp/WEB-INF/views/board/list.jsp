@@ -27,7 +27,7 @@
 						<td>${BoardVO.content}</td>
 						<td>${BoardVO.member_id}</td>
 						<td>${BoardVO.regdate}</td>
-						<td>${BoardVO.updatedate}</td>
+						<td>${BoardVO.modidate}</td>
 					</tr>
 				</ul>
 			</c:forEach>
@@ -44,8 +44,8 @@
 		$(document).ready(function() {
 
 			$("#cBtn").on("click", function() {
-				console.log("생성페이지 이동");
-				$("#f1").submit();
+				console.log("생성 페이지 이동");
+				$(".f1").attr("action", "register").submit();
 			});
 		});
 	</script>

@@ -1,5 +1,7 @@
 package org.kanghee.service;
 
+import java.util.List;
+
 import org.kanghee.domain.BoardVO;
 import org.kanghee.persistence.BoardDAO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +35,12 @@ public class BoardServiceImpl implements BoardService {
 	public void delete(Integer bno) throws Exception {
 		
 		dao.delete(bno);
+	}
+
+	@Override
+	public List<BoardVO> list() throws Exception {
+		
+		return dao.list();
 	}
 
 }

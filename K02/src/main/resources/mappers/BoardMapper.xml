@@ -6,7 +6,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<insert id="create" parameterType="BoardVO">
 		insert into board (title, content, member_id)
-		values (#{title}#{content}#{member_id})
+		values (#{title}, #{content}, #{member_id})
 	</insert>
 	
 	<select id="read" resultType="BoardVO">
@@ -21,4 +21,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete from board where bno = #{bno}
 	</delete>
 	
+	<select id="list" resultType="BoardVO">
+		select * from board
+	</select>
 </mapper>
