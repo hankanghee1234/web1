@@ -8,5 +8,45 @@ public class MemberVO {
 	private String member_pw;
 	private String member_name;
 	private Date regdate;
+	private Date modidate;
+	
+	public String getMember_id() {
+		return member_id;
+	}
+	public void setMember_id(String member_id) {
+		this.member_id = member_id;
+	}
+	public String getMember_pw() {
+		return member_pw;
+	}
+	public void setMember_pw(String member_pw) {
+		this.member_pw = member_pw;
+	}
+	public String getMember_name() {
+		return member_name;
+	}
+	public void setMember_name(String member_name) {
+		this.member_name = member_name;
+	}
+	public Date getRegdate() {
+		return regdate;
+	}
+	public void setRegdate(Date regdate) {
+		this.regdate = regdate;
+	}
+	public Date getModidate() {
+		return modidate;
+	}
+	public void setModidate(Date modidate) {
+		this.modidate = modidate;
+	}
+	
+	@Override
+	public String toString() {
+		return "MemberVO [member_id=" + member_id + ", member_pw=" + member_pw + ", member_name=" + member_name
+				+ ", regdate=" + regdate + ", modidate=" + modidate + "]";
+	}
+	
+	
 	
 }

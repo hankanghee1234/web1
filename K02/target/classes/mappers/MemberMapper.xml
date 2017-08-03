@@ -3,78 +3,30 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="org.kanghee.dao.MemberMapper">
-<sql id="search">
-	<if test="searchType != null">
-		<if test="searchType == 'i'.toString()">
-			and uid like CONCAT('%', #{keyword}, '%')
-		</if>
-		<if test="searchType == 'e'.toString()">
-			and email like CONCAT('%', #{keyword}, '%')
-		</if>
-		<if test="searchType == 'n'.toString()">
-			and uname like CONCAT('%', #{keyword}, '%')
-		</if>
-	</if>
-</sql>
 
 	<insert id="create" parameterType="MemberVO">
-		insert into tbl_member (uid, upw, email, uname, uimg)
-		values (#{uid}, #{upw}, #{email}, #{uname}, #{uimg})
+		insert into tbl_member (member_id, member_pw, member_name)
+		values (#{member_id}, #{member_pw}, #{member_name})
 	</insert>
-
+	
 	<select id="read" resultType="MemberVO">
-		select * from tbl_member where uno = #{uno}
+		select * from tbl_member where member_id = #{member_id}
 	</select>
 
 	<update id="update" parameterType="MemberVO">
-		update tbl_member set uid= #{uid}, upw= #{upw},
-		email= #{email}, uname= #{uname}, uimg = #{uimg}, updatedate = now() where uno = #{uno}
+		update tbl_member set member_pw = #{member_pw}, member_name = #{member_name}, modidate = now() where member_id = #{member_id}
 	</update>
-	
+
 	<delete id="delete" parameterType="MemberVO">
-		delete from tbl_member where uno = #{uno}
+		delete from tbl_member where member_id = #{member_id}
 	</delete>
 	
-	<select id="list" resultType="MemberVO">
-		select * from tbl_member
+	<select id="memberLogin" resultType="String" parameterType="MemberVO">
+		select member_id from tbl_member where member_id = #{member_id} and member_pw = #{member_pw}
 	</select>
 	
-	<select id="listPage" resultType="MemberVO">
-		<![CDATA[
-		select uno, uid, upw, email, uname, uimg, regdate, updatedate
-		from tbl_member where uno > 0 order by uno desc, regdate desc limit #{page}, 10
-		]]>
-	</select>
-	
-	<select id="listCriteria" resultType="MemberVO">
-		<![CDATA[
-		select uno, uid, upw, email, uname, uimg, regdate, updatedate
-		from tbl_member where uno > 0 order by uno desc, regdate desc limit #{pageStart}, #{perPageNum}	
-		]]>
-	</select>
-	
-	<select id="countPaging" resultType="int">
-		<![CDATA[
-		select count(uno) from tbl_member where uno > 0			
-		]]>
-	</select>
-	
-	<select id="listSearch" resultType="MemberVO">
-		<![CDATA[
-		select * from tbl_member where uno > 0
-		]]>
-		<include refid="search"></include> 
-		<![CDATA[
-		order by uno desc
-		limit #{pageStart}, #{perPageNum}		
-		]]>
-	</select>
-	
-	<select id="listSearchCount" resultType="int">
-		<![CDATA[
-		select count(uno) from tbl_member where uno > 0	
-		]]>
-		<include refid="search"></include>
+	<select id="loginCheck" resultType="String">
+		select member_id from tbl_member where member_id = #{member_id}
 	</select>
 	
 </mapper>

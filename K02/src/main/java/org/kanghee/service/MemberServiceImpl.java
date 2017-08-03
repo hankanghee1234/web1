@@ -1,22 +1,16 @@
 package org.kanghee.service;
 
-import java.util.List;
-
-import org.kanghee.domain.Criteria;
 import org.kanghee.domain.MemberVO;
-import org.kanghee.domain.SearchCriteria;
-import org.kanghee.persistence.MemberDAOImpl;
+import org.kanghee.persistence.MemberDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class MemberServiceImpl implements MemberService {
-
-	@Autowired
-	private MemberDAOImpl dao;
 	
-	@Transactional
+	@Autowired
+	private MemberDAO dao;
+	
 	@Override
 	public void create(MemberVO vo) throws Exception {
 		
@@ -24,51 +18,36 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public MemberVO read(Integer uno) throws Exception {
+	public MemberVO read(String member_id) throws Exception {
 		
-		return dao.read(uno);
+		return dao.read(member_id);
 	}
 
 	@Override
 	public void update(MemberVO vo) throws Exception {
 		
 		dao.update(vo);
+		
 	}
 
 	@Override
-	public void delete(Integer uno) throws Exception {
+	public void delete(String member_id) throws Exception {
 		
-		dao.delete(uno);
+		dao.delete(member_id);
 	}
 
 	@Override
-	public List<MemberVO> list() throws Exception {
+	public boolean memberLogin(MemberVO vo) throws Exception {
 		
-		return dao.list();
+		return dao.memberLogin(vo);
 	}
 
 	@Override
-	public List<MemberVO> listCriteria(Criteria cri) throws Exception {
+	public boolean loginCheck(String member_id) throws Exception {
 		
-		return dao.listCriteria(cri);
+		return dao.loginCheck(member_id);
 	}
 
-	@Override
-	public int listCountCriteria(Criteria cri) throws Exception {
-		
-		return dao.countPaging(cri);
-	}
-
-	@Override
-	public List<MemberVO> listSearchCriteria(SearchCriteria cri) throws Exception {
-		
-		return dao.listSearch(cri);
-	}
-
-	@Override
-	public int listSearchCount(SearchCriteria cri) throws Exception {
-		
-		return dao.listSearchCount(cri);
-	}
+	
 
 }

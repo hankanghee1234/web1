@@ -14,8 +14,8 @@ public class LoginUtil {
 		System.out.println("비밀번호 : " + member_pw);
 		
 		HttpSession session = req.getSession();
-		session.setAttribute("userid", member_id);
-		req.setAttribute("userid", member_id);
+		session.setAttribute("member_id", member_id);
+		req.setAttribute("member_id", member_id);
 		
 		Cookie loginCookie = new Cookie("login", member_id);
 		loginCookie.setPath("/");
@@ -31,7 +31,7 @@ public class LoginUtil {
 
 		System.out.println("로그인실패..");
 		
-		return "redirect:/index";
+		return "redirect:/login";
 	}
 	
 	public static String logout(HttpServletRequest req, HttpServletResponse res, String member_id) throws Exception {
@@ -39,8 +39,8 @@ public class LoginUtil {
 	      System.out.println("아이디 : " + member_id);
 	      
 	      HttpSession session = req.getSession();
-	      session.setAttribute("userid", member_id);
-	      req.setAttribute("userid", member_id);
+	      session.setAttribute("member_id", member_id);
+	      req.setAttribute("member_id", member_id);
 	      
 	      Cookie loginCookie = new Cookie("login", member_id);
 	      loginCookie.setPath("/");
@@ -49,6 +49,6 @@ public class LoginUtil {
 	      
 	      System.out.println("쿠키값확인 : " + loginCookie.getValue());
 	      
-	      return "redirect:/LoginPage";
+	      return "redirect:/login";
 	   }
 }
