@@ -19,7 +19,7 @@
 	rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Oxygen'
 	rel='stylesheet' type='text/css'>
-<title>濡�洹몄�명���댁�</title>
+<title>로그인페이지</title>
 
 </head>
 <style>
@@ -98,34 +98,30 @@ input, input::-webkit-input-placeholder {
 		<div class="row main">
 			<div class="panel-heading">
 				<div class="panel-title text-center">
-					<h1 class="title" align="center">회원가입</h1>
+					<h1 class="title" align="center">index 페이지</h1>
 				</div>
 			</div>
 			<div class="main-login main-center">
-				 <form class="register-form" method="post" id="f1" action="register">
+				 <form class="register-form" id="f1">
 					<div class="box-body">
 						<div class="form-group">
-					<label for="MemberID">ID</label> 
-					<input type="text" name="member_id" class="form-control" placeholder="Enter ID">
-				</div>
-				<div class="form-group">
-					<label for="MemberPassword">PW</label>
-					<input type="password" name="member_pw" class="form-control" placeholder="Enter PW">
-				</div>
-				<div class="form-group">
-					<label for="MemberNAME">NAME</label>
-					<input type="text" name="member_name" class="form-control" placeholder="Enter NAME">
-				</div>
-			</div>
-					<button type="button" id="mBtn">등록</button>
-					<button type="button" id="cBtn">취소</button>
+							<label for="MemberID">ID</label> 
+							<input type="text" name="member_id" class="form-control" placeholder="Enter ID">
+						</div>
+						<div class="form-group">
+								<label for="MemberPassword">PW</label>
+								<input type="password" name="member_pw" class="form-control" placeholder="Enter PW">
+						</div>
+					</div>
+					<button type="button" id="lBtn" >로그인</button>
+					<button type="button" id="mBtn">회원가입</button>
 				</form>
-				
 			</div>
 		</div>
 	</div>
 
 	<script type="text/javascript" src="assets/js/bootstrap.js"></script>
+	
 	<script src="https://code.jquery.com/jquery-2.2.4.js"
 		integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
 		crossorigin="anonymous"></script>
@@ -133,13 +129,14 @@ input, input::-webkit-input-placeholder {
 <script>
 	$(document).ready(function(){
 		
-		$("#mBtn").on("click", function() {
-			$("#f1").submit();
+		$("#lBtn").on("click", function() {
+			$("#f1").attr("action", "loginPOST").submit();
 		});
 		
-		$("#cBtn").on("click", function() {
-			self.location = "/index";
-		});
+		$("#mBtn").on("click", function() {
+			$("#f1").attr("method", "post").submit();
+		})
+		
 		
 	});
 

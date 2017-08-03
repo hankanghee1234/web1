@@ -31,7 +31,7 @@ public class LoginUtil {
 
 		System.out.println("로그인실패..");
 		
-		return "redirect:/login";
+		return "redirect:/index";
 	}
 	
 	public static String logout(HttpServletRequest req, HttpServletResponse res, String member_id) throws Exception {
@@ -49,6 +49,6 @@ public class LoginUtil {
 	      
 	      System.out.println("쿠키값확인 : " + loginCookie.getValue());
 	      
-	      return "redirect:/login";
+	      return "redirect:/index";
 	   }
 }
