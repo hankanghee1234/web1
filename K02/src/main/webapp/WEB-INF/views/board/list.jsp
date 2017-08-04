@@ -8,13 +8,7 @@
 <title>Insert title here</title>
 </head>
 <style>
-/*
-/* Created by Filipe Pina
- * Specific styles of signin, register, component
- */
-/*
- * General styles
- */
+
 body, html {
 	height: 100%;
 	background-repeat: no-repeat;
@@ -73,9 +67,9 @@ input, input::-webkit-input-placeholder {
 
 </style>
 <body>
-<h1>게시판 리스트 뿌리기</h1>
-	<form class="f1" name="membership">
-		<table class="table-bordered">
+<h1 class="title">게시글 List</h1>
+	<form class="f1">
+		<table class="table table-bordered table-hover">
 			<tr>
 				<th>번호</th>
 				<th>타이틀</th>
@@ -99,21 +93,34 @@ input, input::-webkit-input-placeholder {
 			</c:forEach>
 		</table>
 		<button class="btn btn-primary" id="cBtn">생성</button>
+		<button class="btn btn-info" id="oBtn">로그아웃</button>
 	</form>
 
+	<form method="post" id="logoutForm" action="logout">
+		<input id="logoutHidden" type="hidden" name="member_id" value="${member_id}">
+	</form> <!-- 로그아웃 처리 -->
 
 	<script src="https://code.jquery.com/jquery-2.2.4.js"
 		integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
 		crossorigin="anonymous"></script>
 
-	<script>
-		$(document).ready(function() {
+<script>
+	$(document).ready(function() {
 
-			$("#cBtn").on("click", function() {
-				console.log("생성 페이지 이동");
-				$(".f1").attr("action", "register").submit();
-			});
+		var loginSession = '${member_id}';
+			 
+		$("#cBtn").on("click", function() {
+	
+			$(".f1").attr("action", "register").submit();
+		
 		});
-	</script>
+			
+		$("#oBtn").on("click", function() {
+		             
+			$('#logoutForm').submit();
+			               	
+		});
+	});
+</script>
 </body>
 </html>

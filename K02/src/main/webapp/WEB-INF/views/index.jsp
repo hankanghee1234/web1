@@ -96,7 +96,7 @@ button {
 				</div>
 			</div>
 			<div class="main-login main-center">
-				 <form class="register-form" id="f1" align="center" method="post" action="<c:url value='/member/loginPOST'/>">
+				 <form class="register-form" id="f1" align="center" method="post" action="<c:url value='/board/loginPOST'/>">
 					<div class="box-body">
 						<div class="form-group">
 							<label for="MemberID"></label> 
@@ -131,7 +131,6 @@ button {
 			alert('로그인에 실패하였습니다.. 다시로그인해주세요!');
 		}
 
-		
 		$("#lBtn").on("click", function() {
 			$("#f1").submit();
 		});

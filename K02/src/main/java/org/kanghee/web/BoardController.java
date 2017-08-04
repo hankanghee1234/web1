@@ -1,7 +1,13 @@
 package org.kanghee.web;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.kanghee.domain.BoardVO;
+import org.kanghee.domain.MemberVO;
 import org.kanghee.service.BoardServiceImpl;
+import org.kanghee.service.MemberServiceImpl;
+import org.kanghee.util.LoginUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/board/*")
@@ -18,7 +25,10 @@ public class BoardController {
 	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
 	
 	@Autowired
-	private BoardServiceImpl service;
+	private BoardServiceImpl boardService;
+	
+	@Autowired
+	private MemberServiceImpl memberService;
 	
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public void registGET() throws Exception {
@@ -30,7 +40,7 @@ public class BoardController {
 		logger.info("registPOST load............");
 		logger.info(vo.toString());
 	
-		service.create(vo);
+		boardService.create(vo);
 		model.addAttribute("vo", vo);
 		
 		return "redirect:./list";
@@ -40,14 +50,55 @@ public class BoardController {
 	public void viewGET(@RequestParam("bno")Integer bno, Model model) throws Exception {
 		logger.info("viewPage GET.............");
 		
-		model.addAttribute("read", service.read(bno));
+		model.addAttribute("read", boardService.read(bno));
 	}
 	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public void listPage(Model model) throws Exception {
 		logger.info("List Page 이동");
 		
-		model.addAttribute("list", service.list());
+		model.addAttribute("list", boardService.list());
+	}
+	
+	
+	@RequestMapping(value = "/loginPOST", method = RequestMethod.POST)
+	public String loginPOST(HttpServletRequest req, HttpServletResponse res, MemberVO vo, RedirectAttributes rttr) throws Exception {
+
+	      String member_id = vo.getMember_id();
+	      String member_pw = vo.getMember_pw();
+	      
+	      boolean check = memberService.memberLogin(vo);
+
+	      if (check == true) {
+	         rttr.addFlashAttribute("msg", "loginSuccess");
+	         logger.info("로그인성공..." + check);
+	         
+	         return LoginUtil.Success(req, res, member_id, member_pw);
+	         
+	      } else {
+	    	 rttr.addFlashAttribute("msg", "loginFail");
+	         logger.info("로그인실패..." + check);
+	        
+	         return LoginUtil.Fail(req, res);
+	      }
+	   }
+	   
+	@RequestMapping(value = "/logout", method = RequestMethod.POST)
+	public String logout(HttpServletRequest req, HttpServletResponse res, MemberVO vo) throws Exception {
+	      logger.info("logout: " + vo);
+	     
+	      String member_id = vo.getMember_id();
+	     
+	      return LoginUtil.logout(req, res, member_id);
+	}
+	   
+	@RequestMapping(value = "/loginCheck", method = RequestMethod.POST)
+	public boolean loginCheck(String member_id) throws Exception {
+	      
+		boolean check = memberService.loginCheck(member_id);  
+		logger.info("중복체크..." + check);
+	      
+		return check;
 	}
 	
 	/*@RequestMapping(value = "/update", method = RequestMethod.GET)
