@@ -96,7 +96,7 @@ button {
 				</div>
 			</div>
 			<div class="main-login main-center">
-				 <form class="register-form" id="f1" align="center" action="<c:url value='/member/loginPOST'/>">
+				 <form class="register-form" id="f1" align="center" method="post" action="<c:url value='/member/loginPOST'/>">
 					<div class="box-body">
 						<div class="form-group">
 							<label for="MemberID"></label> 

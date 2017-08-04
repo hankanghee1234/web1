@@ -135,7 +135,7 @@ input, input::-webkit-input-placeholder {
 		if (msg == 'registSuccess') {
 			alert('회원가입에 성공하셨습니다!');
 		} 
-
+		
 		
 		$("#mBtn").on("click", function() {
 			$("#f1").submit();
