@@ -5,10 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
 
-<!-- Website CSS style -->
-<link rel="stylesheet" type="text/css" href="assets/css/main.css">
 
 <!-- Website Font style -->
 <link rel="stylesheet"
@@ -19,7 +16,7 @@
 	rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Oxygen'
 	rel='stylesheet' type='text/css'>
-<title>濡�洹몄�명���댁�</title>
+<title>회원가입 페이지</title>
 
 </head>
 <style>
@@ -102,18 +99,18 @@ input, input::-webkit-input-placeholder {
 				</div>
 			</div>
 			<div class="main-login main-center">
-				 <form class="register-form" method="post" id="f1" action="register">
+				 <form class="register-form" method="post" id="f1" action="register" align="center">
 					<div class="box-body">
 						<div class="form-group">
-					<label for="MemberID">ID</label> 
+					<label for="MemberID"></label> 
 					<input type="text" name="member_id" class="form-control" placeholder="Enter ID">
 				</div>
 				<div class="form-group">
-					<label for="MemberPassword">PW</label>
+					<label for="MemberPassword"></label>
 					<input type="password" name="member_pw" class="form-control" placeholder="Enter PW">
 				</div>
 				<div class="form-group">
-					<label for="MemberNAME">NAME</label>
+					<label for="MemberNAME"></label>
 					<input type="text" name="member_name" class="form-control" placeholder="Enter NAME">
 				</div>
 			</div>
@@ -125,13 +122,20 @@ input, input::-webkit-input-placeholder {
 		</div>
 	</div>
 
-	<script type="text/javascript" src="assets/js/bootstrap.js"></script>
+	
 	<script src="https://code.jquery.com/jquery-2.2.4.js"
 		integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
 		crossorigin="anonymous"></script>
 
 <script>
 	$(document).ready(function(){
+		
+		var msg = '${msg}';
+		
+		if (msg == 'registSuccess') {
+			alert('회원가입에 성공하셨습니다!');
+		} 
+
 		
 		$("#mBtn").on("click", function() {
 			$("#f1").submit();

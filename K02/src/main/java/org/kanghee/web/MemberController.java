@@ -25,7 +25,7 @@ public class MemberController {
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 	
 	@RequestMapping(value = "/loginPOST", method = RequestMethod.POST)
-	   public String loginPOST(HttpServletRequest req, HttpServletResponse res, MemberVO vo, RedirectAttributes rttr) throws Exception {
+	public String loginPOST(HttpServletRequest req, HttpServletResponse res, MemberVO vo, RedirectAttributes rttr) throws Exception {
 
 	      String member_id = vo.getMember_id();
 	      String member_pw = vo.getMember_pw();
@@ -33,12 +33,13 @@ public class MemberController {
 	      boolean check = memberService.memberLogin(vo);
 
 	      if (check == true) {
-	         rttr.addFlashAttribute("msg", "loginSUCCESS");
+	         rttr.addFlashAttribute("msg", "loginSuccess");
 	         logger.info("로그인성공..." + check);
 	         
 	         return LoginUtil.Success(req, res, member_id, member_pw);
+	         
 	      } else {
-	         rttr.addFlashAttribute("msg", "loginFail");
+	    	 rttr.addFlashAttribute("msg", "loginFail");
 	         logger.info("로그인실패..." + check);
 	        
 	         return LoginUtil.Fail(req, res);
@@ -49,9 +50,9 @@ public class MemberController {
 	   public String logout(HttpServletRequest req, HttpServletResponse res, MemberVO vo) throws Exception {
 	      logger.info("logout: " + vo);
 	     
-	      String userid = vo.getMember_id();
+	      String member_id = vo.getMember_id();
 	     
-	      return LoginUtil.logout(req, res, userid);
+	      return LoginUtil.logout(req, res, member_id);
 	   }
 	   
 	@RequestMapping(value = "/loginCheck", method = RequestMethod.POST)
@@ -69,12 +70,12 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	   public String registPOST(MemberVO vo, Model model) throws Exception {
+	   public String registPOST(MemberVO vo, RedirectAttributes rttr) throws Exception {
 	      logger.info("register POST............");
 	      logger.info(vo.toString());
 
 	      memberService.create(vo);
-	      model.addAttribute("vo", vo);
+	      rttr.addFlashAttribute("msg", "registSuccess");
 	      
 	      return "redirect:/index";
 	   }
