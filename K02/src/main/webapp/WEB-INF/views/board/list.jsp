@@ -62,9 +62,6 @@ input, input::-webkit-input-placeholder {
 	padding: 40px 40px;
 }
 
-
-
-
 </style>
 <body>
 <h1 class="title">게시글 List</h1>
@@ -85,9 +82,9 @@ input, input::-webkit-input-placeholder {
 						<td><a href='/board/view&bno=${BoardVO.bno}'>${BoardVO.bno}</a></td>
 						<td>${BoardVO.title}</td>
 						<td>${BoardVO.content}</td>
-						<td>${BoardVO.member_id}</td>
-						<td>${BoardVO.regdate}</td>
-						<td>${BoardVO.modidate}</td>
+						<td>${read.member_id}</td>
+						<td>${read.regdate}</td>
+						<td>${read.modidate}</td>
 					</tr>
 				</ul>
 			</c:forEach>
@@ -96,7 +93,7 @@ input, input::-webkit-input-placeholder {
 		<button class="btn btn-info" id="oBtn">로그아웃</button>
 	</form>
 
-	<form method="post" id="logoutForm" action="logout">
+	<form method="post" id="logoutForm" action="<c:url value='/member/logout'/>">
 		<input id="logoutHidden" type="hidden" name="member_id" value="${member_id}">
 	</form> <!-- 로그아웃 처리 -->
 

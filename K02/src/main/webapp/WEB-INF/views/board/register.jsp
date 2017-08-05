@@ -9,6 +9,7 @@
 </head>
 <body>
 	<form action="register" method="post">
+		<input type="hidden" name="member_id" value="${param.member_id}">
 		<div class="form-group" align="center">
 			<h1>회원가입 페이지</h1>
 			<div class="box-body">

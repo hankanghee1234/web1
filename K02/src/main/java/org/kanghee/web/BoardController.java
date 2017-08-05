@@ -2,6 +2,7 @@ package org.kanghee.web;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.kanghee.domain.BoardVO;
 import org.kanghee.domain.MemberVO;
@@ -54,12 +55,20 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public void listPage(Model model) throws Exception {
+	public void listPage(Model model, HttpServletRequest req) throws Exception {
 		logger.info("List Page 이동");
 		
+		HttpSession session = req.getSession();
+	    String member_id = session.getAttribute("member_id").toString();      
+	    System.out.println(member_id);
+	    //cri.setUserid(member_id);
+	      
+	    //int pageNum = cri.getPage();
+	      
+	    model.addAttribute("read", memberService.read(member_id)); 
 		model.addAttribute("list", boardService.list());
-	}
 	
+	} //로그인한 Member_ID에 게시글만 보여주기 	
 	
 	@RequestMapping(value = "/loginPOST", method = RequestMethod.POST)
 	public String loginPOST(HttpServletRequest req, HttpServletResponse res, MemberVO vo, RedirectAttributes rttr) throws Exception {
@@ -82,24 +91,6 @@ public class BoardController {
 	         return LoginUtil.Fail(req, res);
 	      }
 	   }
-	   
-	@RequestMapping(value = "/logout", method = RequestMethod.POST)
-	public String logout(HttpServletRequest req, HttpServletResponse res, MemberVO vo) throws Exception {
-	      logger.info("logout: " + vo);
-	     
-	      String member_id = vo.getMember_id();
-	     
-	      return LoginUtil.logout(req, res, member_id);
-	}
-	   
-	@RequestMapping(value = "/loginCheck", method = RequestMethod.POST)
-	public boolean loginCheck(String member_id) throws Exception {
-	      
-		boolean check = memberService.loginCheck(member_id);  
-		logger.info("중복체크..." + check);
-	      
-		return check;
-	}
 	
 	/*@RequestMapping(value = "/update", method = RequestMethod.GET)
 	public void updateGET(@RequestParam("uno")Integer uno, @ModelAttribute("cri")SearchCriteria cri, 
