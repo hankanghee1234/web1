@@ -92,6 +92,15 @@ public class BoardController {
 	      }
 	   }
 	
+	@RequestMapping(value = "/logout", method = RequestMethod.POST)
+	public String logout(HttpServletRequest req, HttpServletResponse res, MemberVO vo) throws Exception {
+	      logger.info("logout: " + vo);
+	     
+	      String member_id = vo.getMember_id();
+	     
+	      return LoginUtil.logout(req, res, member_id);
+	}
+	
 	/*@RequestMapping(value = "/update", method = RequestMethod.GET)
 	public void updateGET(@RequestParam("uno")Integer uno, @ModelAttribute("cri")SearchCriteria cri, 
 			Model model) throws Exception {

@@ -1,11 +1,7 @@
 package org.kanghee.web;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.kanghee.domain.MemberVO;
 import org.kanghee.service.MemberServiceImpl;
-import org.kanghee.util.LoginUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,14 +35,7 @@ public class MemberController {
 	      return "redirect:/index";
 	   }
 
-	@RequestMapping(value = "/logout", method = RequestMethod.POST)
-	public String logout(HttpServletRequest req, HttpServletResponse res, MemberVO vo) throws Exception {
-	      logger.info("logout: " + vo);
-	     
-	      String member_id = vo.getMember_id();
-	     
-	      return LoginUtil.logout(req, res, member_id);
-	}
+	
 	   
 	@RequestMapping(value = "/loginCheck", method = RequestMethod.POST)
 	public boolean loginCheck(String member_id) throws Exception {

@@ -79,12 +79,12 @@ input, input::-webkit-input-placeholder {
 			<c:forEach items="${list}" var="BoardVO">
 				<ul class="list">
 					<tr>
-						<td><a href='/board/view&bno=${BoardVO.bno}'>${BoardVO.bno}</a></td>
+						<td>${BoardVO.bno}</td>
 						<td>${BoardVO.title}</td>
 						<td>${BoardVO.content}</td>
-						<td>${read.member_id}</td>
-						<td>${read.regdate}</td>
-						<td>${read.modidate}</td>
+						<td>${read.member_name}</td>
+						<td>${BoardVO.regdate}</td>
+						<td>${BoardVO.modidate}</td>
 					</tr>
 				</ul>
 			</c:forEach>
@@ -93,7 +93,7 @@ input, input::-webkit-input-placeholder {
 		<button class="btn btn-info" id="oBtn">로그아웃</button>
 	</form>
 
-	<form method="post" id="logoutForm" action="<c:url value='/member/logout'/>">
+	<form method="post" id="logoutForm" action="<c:url value='/board/logout'/>">
 		<input id="logoutHidden" type="hidden" name="member_id" value="${member_id}">
 	</form> <!-- 로그아웃 처리 -->
 
@@ -113,7 +113,7 @@ input, input::-webkit-input-placeholder {
 		});
 			
 		$("#oBtn").on("click", function() {
-		             
+		    console.log("로그아웃");         
 			$('#logoutForm').submit();
 			               	
 		});
