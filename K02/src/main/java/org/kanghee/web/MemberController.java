@@ -1,7 +1,11 @@
 package org.kanghee.web;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.kanghee.domain.MemberVO;
 import org.kanghee.service.MemberServiceImpl;
+import org.kanghee.util.LoginUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,18 +29,16 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	   public String registPOST(MemberVO vo, RedirectAttributes rttr) throws Exception {
-	      logger.info("register POST............");
-	      logger.info(vo.toString());
+	public String registPOST(MemberVO vo, RedirectAttributes rttr) throws Exception {
+		logger.info("register POST............");
+	    logger.info(vo.toString());
 
-	      memberService.create(vo);
-	      rttr.addFlashAttribute("msg", "registSuccess");
+	    memberService.create(vo);
+	    rttr.addFlashAttribute("msg", "registSuccess");
 	      
-	      return "redirect:/index";
-	   }
+	    return "redirect:/index";
+	}
 
-	
-	   
 	@RequestMapping(value = "/loginCheck", method = RequestMethod.POST)
 	public boolean loginCheck(String member_id) throws Exception {
 	      
@@ -44,5 +46,14 @@ public class MemberController {
 		logger.info("중복체크..." + check);
 	      
 		return check;
+	}
+	
+	@RequestMapping(value = "/logout", method = RequestMethod.POST)
+	public String logout(HttpServletRequest req, HttpServletResponse res, MemberVO vo) throws Exception {
+	      logger.info("logout: " + vo);
+	     
+	      String member_id = vo.getMember_id();
+	     
+	      return LoginUtil.logout(req, res, member_id);
 	}
 }

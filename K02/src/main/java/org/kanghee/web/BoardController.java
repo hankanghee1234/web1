@@ -61,9 +61,6 @@ public class BoardController {
 		HttpSession session = req.getSession();
 	    String member_id = session.getAttribute("member_id").toString();      
 	    System.out.println(member_id);
-	    //cri.setUserid(member_id);
-	      
-	    //int pageNum = cri.getPage();
 	      
 	    model.addAttribute("read", memberService.read(member_id)); 
 		model.addAttribute("list", boardService.list());
@@ -91,15 +88,6 @@ public class BoardController {
 	         return LoginUtil.Fail(req, res);
 	      }
 	   }
-	
-	@RequestMapping(value = "/logout", method = RequestMethod.POST)
-	public String logout(HttpServletRequest req, HttpServletResponse res, MemberVO vo) throws Exception {
-	      logger.info("logout: " + vo);
-	     
-	      String member_id = vo.getMember_id();
-	     
-	      return LoginUtil.logout(req, res, member_id);
-	}
 	
 	/*@RequestMapping(value = "/update", method = RequestMethod.GET)
 	public void updateGET(@RequestParam("uno")Integer uno, @ModelAttribute("cri")SearchCriteria cri, 

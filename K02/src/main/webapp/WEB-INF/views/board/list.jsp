@@ -35,16 +35,11 @@ hr {
 	margin-bottom: 15px;
 }
 
-.table-bordered {
+.title {
 	margin-bottom: 15px;
 }
 
-input, input::-webkit-input-placeholder {
-	font-size: 11px;
-	padding-top: 3px;
-}
-
-.main-login {
+.table-bordered {
 	background-color: #fff;
 	/* shadows and rounded borders */
 	-moz-border-radius: 2px;
@@ -55,7 +50,7 @@ input, input::-webkit-input-placeholder {
 	box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
 }
 
-.main-center {
+.table-hover {
 	margin-top: 30px;
 	margin: 0 auto;
 	max-width: 330px;
@@ -82,7 +77,7 @@ input, input::-webkit-input-placeholder {
 						<td>${BoardVO.bno}</td>
 						<td>${BoardVO.title}</td>
 						<td>${BoardVO.content}</td>
-						<td>${read.member_name}</td>
+						<td>${read.member_id}</td>
 						<td>${BoardVO.regdate}</td>
 						<td>${BoardVO.modidate}</td>
 					</tr>
@@ -93,7 +88,7 @@ input, input::-webkit-input-placeholder {
 		<button class="btn btn-info" id="oBtn">로그아웃</button>
 	</form>
 
-	<form method="post" id="logoutForm" action="<c:url value='/board/logout'/>">
+	<form method="post" id="logoutForm" action="<c:url value='/member/logout'/>">
 		<input id="logoutHidden" type="hidden" name="member_id" value="${member_id}">
 	</form> <!-- 로그아웃 처리 -->
 

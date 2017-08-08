@@ -7,7 +7,7 @@ public class BoardVO {
 	private Integer bno;
 	private String title;
 	private String content;
-	private String member_name;
+	private String member_id;
 	private Date regdate;
 	private Date modidate;
 	
@@ -29,11 +29,11 @@ public class BoardVO {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public String getMember_name() {
-		return member_name;
+	public String getMember_id() {
+		return member_id;
 	}
-	public void setMember_name(String member_name) {
-		this.member_name = member_name;
+	public void setMember_id(String member_id) {
+		this.member_id = member_id;
 	}
 	public Date getRegdate() {
 		return regdate;
@@ -50,10 +50,8 @@ public class BoardVO {
 	
 	@Override
 	public String toString() {
-		return "BoardVO [bno=" + bno + ", title=" + title + ", content=" + content + ", member_name=" + member_name
+		return "BoardVO [bno=" + bno + ", title=" + title + ", content=" + content + ", member_id=" + member_id
 				+ ", regdate=" + regdate + ", modidate=" + modidate + "]";
 	}
-	
-	
 	
 }
