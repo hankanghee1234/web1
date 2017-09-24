@@ -19,7 +19,7 @@ public class ConnectorTest {
 
 		Connection con = DriverManager.getConnection(
 				"jdbc:mysql://localhost:3306/bit88?useSSL=false&serverTimezone=Asia/Seoul", 
-				"makemoney", "makemoney");
+				"hankanghee", "1234");
 
 		System.out.println(con);
 		con.close();
