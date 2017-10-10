@@ -1,7 +1,5 @@
 package org.kanghee.web;
 
-import static org.junit.Assert.*;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.kanghee.domain.BoardVO;
