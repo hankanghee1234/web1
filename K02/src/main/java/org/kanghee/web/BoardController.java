@@ -19,7 +19,7 @@ public class BoardController {
 	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
 	
 	@Autowired
-	private BoardServiceImpl boardService;
+	private BoardServiceImpl service;
 	
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public void registGET() throws Exception {
@@ -31,7 +31,7 @@ public class BoardController {
 		logger.info("registPOST load............");
 		logger.info(vo.toString());
 	
-		boardService.create(vo);
+		service.create(vo);
 		model.addAttribute("vo", vo);
 		
 		return "redirect:./list";
@@ -41,14 +41,14 @@ public class BoardController {
 	public void listPage(Model model) throws Exception {
 		logger.info("list Page GET...........");
 		
-		model.addAttribute("list", boardService.list());
+		model.addAttribute("list", service.list());
 	} 
 	
-	@RequestMapping(value = "view", method = RequestMethod.GET)
+	@RequestMapping(value = "/view", method = RequestMethod.GET)
 	public void viewPageGET(Model model, Integer bno) throws Exception {
 		logger.info("view Page GET..........");
 		
-		model.addAttribute("read", boardService.read(bno));
+		model.addAttribute("read", service.read(bno));
 	}
 	
 	
