@@ -38,7 +38,7 @@ public class BoardController {
 		model.addAttribute("vo", vo);
 		rttr.addFlashAttribute("msg", "success");
 		
-		return "redirect:/board/list";
+		return "redirect:./list";
 	}
 	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
@@ -51,34 +51,45 @@ public class BoardController {
 	@RequestMapping(value = "/view", method = RequestMethod.GET)
 	public void viewPageGET(Model model, @RequestParam("bno")Integer bno) throws Exception {
 		logger.info("view Page GET..........");
+		logger.info(bno.toString());
 		
 		model.addAttribute("read", service.read(bno));
 	}
 	
 	@RequestMapping(value = "/remove", method = RequestMethod.POST)
-	public String deletePOST(@RequestParam("bno")Integer bno, RedirectAttributes rttr) throws Exception {
+	public String deletePOST(Integer bno, RedirectAttributes rttr) throws Exception {
 		logger.info("Remove Page POST........");
+		logger.info(bno.toString());
 		
 		service.delete(bno);
 		rttr.addFlashAttribute("msg", "success");
 		
-		return "redirect:/board/list";
+		return "redirect:./list";
 	}
 	
 	@RequestMapping(value = "/modify", method = RequestMethod.GET)
 	public void updateGET(Integer bno, Model model) throws Exception {
 		logger.info("Modify Page GET........");
+		logger.info(bno.toString());
 		
-		model.addAttribute(service.read(bno));
+		model.addAttribute("read", service.read(bno));
 	}
 	
 	@RequestMapping(value = "/modify", method = RequestMethod.POST)
-	public String updatePOST(BoardVO vo, RedirectAttributes rttr) throws Exception {
+	public String updatePOST(BoardVO vo, Model model, RedirectAttributes rttr) throws Exception {
 		logger.info("Modify Page POST........");
+		logger.info(vo.toString());
 		
 		service.update(vo);
+		model.addAttribute("vo", vo);
 		rttr.addFlashAttribute("msg", "success");
 		
-		return "redirect:/board/list";
+		return "redirect:./list";
 	}
+	
+	/*@RequestMapping(value = "loginPass", method = RequestMethod.GET)
+	public void loginPass() throws Exception {
+		
+		
+	}*/
 }

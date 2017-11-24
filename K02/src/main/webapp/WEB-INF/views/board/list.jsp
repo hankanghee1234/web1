@@ -21,6 +21,7 @@
   }
 </style>
 <body>
+<form id="f1">
 <h1 align="center">Member 게시판 입니다.</h1>
 	<div class="responsive-table" align="center">
 		<table class="table table-bordered table-hover" width="50%" cellspacing="0">
@@ -32,17 +33,33 @@
 				<th>REGDATE</th>
 				<th>MODIDATE</th>
 			</tr>
-			<c:forEach items="${list}" var="BoardVO">
+			<c:forEach items="${list}" var="vo">
 				<tr>
-					<td><a href="/board/view?bno=${BoardVO.bno}">${BoardVO.bno}</a></td>
-					<td>${BoardVO.title}</td>
-					<td>${BoardVO.content}</td>
-					<td>${BoardVO.member_name}</td>
-					<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${BoardVO.regdate}"></fmt:formatDate></td>
-					<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${BoardVO.modidate}"></fmt:formatDate></td>
+					<td><a href="/board/view?bno=${vo.bno}">${vo.bno}</a></td>
+					<td>${vo.title}</td>
+					<td>${vo.content}</td>
+					<td>${vo.member_name}</td>
+					<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${vo.regdate}"></fmt:formatDate></td>
+					<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${vo.modidate}"></fmt:formatDate></td>
 				</tr>
 			</c:forEach>
 		</table>
 	</div>
+	<div class="box-footer">
+		<button class="btn btn-primary" id="rBtn">생성</button>
+	</div>
+</form>	
+<script src="https://code.jquery.com/jquery-2.2.4.js"
+	integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+	crossorigin="anonymous"></script>	
+	
+<script>
+	$(document).ready(function (){
+		
+		$("#rBtn").on("click", function() {
+			$("#f1").attr("action", "register").attr("method", "get").submit();
+		}); // 게시판 생성 버튼 누르기
+	});
+</script>
 </body>
 </html>

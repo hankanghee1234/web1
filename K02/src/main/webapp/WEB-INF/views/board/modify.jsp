@@ -8,30 +8,51 @@
 </head>
 <body>
 <h1>게시글 수정 합니다.</h1>
-<form role="form" method="post">
+<form role="form" action="modify" method="post">
 	<div class="box-body">
 		<div class="form-group">
 			<label for="exampleInputBNO">BNO</label>
-				<input type="text" name="bno" class="form-control" value="${BoardVO.bno}" readonly="readonly">
+				<input type="text" name="bno" class="form-control" value="${read.bno}" readonly="readonly">
 		</div>
 		<div class="form-group">
 			<label for="exampleInputTitle">TITLE</label>
-				<input type="text" name="title" class="form-control" value="${BoardVO.title}" readonly="readonly">
+				<input type="text" name="title" class="form-control" value="${read.title}" readonly="readonly">
 		</div>
 		<div class="form-group">
 			<label for="exampleInputContent">CONTENT</label>
-				<textarea name="content" class="form-control" rows="3">${BoardVO.content}</textarea>
+				<input type=text class="form-control" name="content" placeholder="게시글 수정" value="${BoardVO.content}">
+				<%-- <textarea name="content" class="form-control" rows="3" placeholder="게시글 수정" value="${BoardVO.content}"></textarea> --%>
 		</div>
 		<div class="form-group">
 			<label for="exampleInputMemberName">MEMBER_NAME</label>
-				<input type="text" name="member_name" class="form-control" value="${BoardVO.member_name}">
+				<input type="text" name="member_name" class="form-control" value="${read.member_name}" readonly="readonly">
 		</div>
 	</div>
 </form>
 
 <div class="box-footer">
-	<button type="submit" class="btn btn-primary">SAVE</button>
-	<button type="submit" class="btn btn-warning">CANCEL</button>
+	<button class="btn btn-primary" id="uBtn">SAVE</button>
+	<button class="btn btn-warning" id="cBtn">CANCEL</button>
 </div>
+
+<script src="https://code.jquery.com/jquery-2.2.4.js"
+	integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+	crossorigin="anonymous"></script>
+	
+<script>
+	$(document).ready(function() {
+		
+		var formObj = $("form[role='form']");
+		console.log(formObj);
+		
+		$("#cBtn").on("click", function() {
+			self.location = "/board/list";
+		});
+		
+		$("#uBtn").on("click", function() {
+			formObj.submit();
+		});
+	});
+</script>
 </body>
 </html>
